@@ -247,3 +247,39 @@ var bike = new Bicycle(2);
 
 car.drive();
 bike.drive();
+
+function GetWheels<w extends Vehicle>(veh:w): number {
+  return veh.drive();
+}
+
+GetWheels(car)
+GetWheels(bike)
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Interfaces Part 2
+////////////////////////////////////////////////////////////////////////////////
+
+function GetType<T>(val: T): string {
+  return typeof(val);
+}
+
+var aStr = "A string";
+var aNum = 10;
+
+document.write(GetType(aStr) + '.<br>')
+document.write(GetType(aNum) + '.<br>')
+
+
+
+class GenericNumber<T>{
+  add: (val1: T, val2: T) => T;
+}
+
+var aNumber = new GenericNumber<number>();
+aNumber.add = function(x, y){return x + y;}
+document.write('5 + 4 = ' + aNumber.add(5,4) + '<br>');
+
+var aStrNum = new GenericNumber<string>();
+aStrNum.add = function(x, y){return String(Number(x) + Number(y));}
+document.write('5 + 4 = ' + aStrNum.add('5','4') + '<br>');

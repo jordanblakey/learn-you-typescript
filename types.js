@@ -196,3 +196,29 @@ var car = new Car(4);
 var bike = new Bicycle(2);
 car.drive();
 bike.drive();
+function GetWheels(veh) {
+    return veh.drive();
+}
+GetWheels(car);
+GetWheels(bike);
+////////////////////////////////////////////////////////////////////////////////
+// Interfaces Part 2
+////////////////////////////////////////////////////////////////////////////////
+function GetType(val) {
+    return typeof (val);
+}
+var aStr = "A string";
+var aNum = 10;
+document.write(GetType(aStr) + '.<br>');
+document.write(GetType(aNum) + '.<br>');
+var GenericNumber = (function () {
+    function GenericNumber() {
+    }
+    return GenericNumber;
+})();
+var aNumber = new GenericNumber();
+aNumber.add = function (x, y) { return x + y; };
+document.write('5 + 4 = ' + aNumber.add(5, 4) + '<br>');
+var aStrNum = new GenericNumber();
+aStrNum.add = function (x, y) { return String(Number(x) + Number(y)); };
+document.write('5 + 4 = ' + aStrNum.add('5', '4') + '<br>');
