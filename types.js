@@ -1,3 +1,8 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 ////////////////////////////////////////////////////////////////////////////////
 // BASIC TYPES
 ////////////////////////////////////////////////////////////////////////////////
@@ -155,3 +160,39 @@ spot.ownerInfo();
 spot.weight = 100;
 document.write('Spot\'s weight is ' + spot.weight + ' pounds.<br>');
 document.write('# of Animal instances: ' + Animal.howManyAnimals() + '<br>');
+////////////////////////////////////////////////////////////////////////////////
+// Polymorphism
+////////////////////////////////////////////////////////////////////////////////
+var Dog = (function (_super) {
+    __extends(Dog, _super);
+    function Dog(name, owner) {
+        _super.call(this, name, owner);
+        Dog.numOfAnimals++;
+    }
+    return Dog;
+})(Animal);
+var grover = new Dog('Grover', 'Jimmy');
+document.write('# of Animals: ' + Animal.howManyAnimals() + '.<br>');
+document.write('Is a Dog an Animal? ' + (grover instanceof Animal) + '<br>');
+var Car = (function () {
+    function Car(wheels) {
+        this.wheels = wheels;
+    }
+    Car.prototype.drive = function () {
+        document.write('The car drives with ' + this.wheels + ' wheels.<br>');
+    };
+    return Car;
+})();
+var Bicycle = (function () {
+    function Bicycle(wheels) {
+        this.wheels = wheels;
+    }
+    Bicycle.prototype.drive = function () {
+        document.write('The bicycle drives with ' + this.wheels + ' wheels.<br>');
+    };
+    return Bicycle;
+})();
+var car = new Car(4);
+var bike = new Bicycle(2);
+car.drive();
+bike.drive();

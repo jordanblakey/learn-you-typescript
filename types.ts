@@ -199,3 +199,51 @@ spot.ownerInfo();
 spot.weight = 100;
 document.write('Spot\'s weight is ' + spot.weight + ' pounds.<br>')
 document.write('# of Animal instances: ' + Animal.howManyAnimals() + '<br>')
+
+////////////////////////////////////////////////////////////////////////////////
+// Polymorphism
+////////////////////////////////////////////////////////////////////////////////
+
+class Dog extends Animal {
+  constructor(name: string, owner: string) {
+    super(name, owner)
+    Dog.numOfAnimals++;
+  }
+}
+
+var grover = new Dog('Grover', 'Jimmy');
+document.write('# of Animals: ' + Animal.howManyAnimals() + '.<br>');
+
+document.write('Is a Dog an Animal? ' + (grover instanceof Animal) + '<br>');
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Interfaces Part 2
+////////////////////////////////////////////////////////////////////////////////
+
+interface Vehicle {
+  drive(): any;
+}
+
+class Car implements Vehicle {
+  constructor(private wheels: number) {}
+
+  drive(): void {
+    document.write('The car drives with ' + this.wheels + ' wheels.<br>')
+  }
+}
+
+class Bicycle implements Vehicle {
+  constructor(private wheels: number) {}
+
+  drive(): void {
+    document.write('The bicycle drives with ' + this.wheels + ' wheels.<br>')
+  }
+}
+
+var car = new Car(4);
+var bike = new Bicycle(2);
+
+car.drive();
+bike.drive();
