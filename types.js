@@ -121,3 +121,37 @@ var sumAll = function () {
 sumAll(1, 3, 4, 5, 6, 7);
 var addOne = function (x) { return x + 1; };
 document.write('1 + 1 = ' + addOne(1) + '.<br>');
+////////////////////////////////////////////////////////////////////////////////
+// Classes
+////////////////////////////////////////////////////////////////////////////////
+var Animal = (function () {
+    function Animal(name, owner) {
+        this.name = name;
+        this.owner = owner;
+        Animal.numOfAnimals++;
+    }
+    Animal.prototype.ownerInfo = function () {
+        document.write(this.name + ' is owned by ' + this.owner + '.<br>');
+    };
+    Animal.howManyAnimals = function () {
+        return Animal.numOfAnimals;
+    };
+    Object.defineProperty(Animal.prototype, "weight", {
+        get: function () {
+            return this._weight;
+        },
+        set: function (weight) {
+            this._weight = weight;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // static shared between all instances of a class
+    Animal.numOfAnimals = 0;
+    return Animal;
+})();
+var spot = new Animal('Spot', 'Doug');
+spot.ownerInfo();
+spot.weight = 100;
+document.write('Spot\'s weight is ' + spot.weight + ' pounds.<br>');
+document.write('# of Animal instances: ' + Animal.howManyAnimals() + '<br>');

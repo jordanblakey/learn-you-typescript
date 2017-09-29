@@ -149,9 +149,9 @@ document.write('5 - 2 - 7 = ' + getDiff(5,2,7) + '.<br>')
 
 // Indefinite num of args
 var sumAll = function(...nums: number[]):
-  void{
-    // Arrow function within reduce
-    var sum = nums.reduce((a, b) => a + b, 0);
+void{
+  // Arrow function within reduce
+  var sum = nums.reduce((a, b) => a + b, 0);
     document.write('Sum: ' + sum + '.<br>')
   }
 
@@ -160,3 +160,42 @@ var sumAll = function(...nums: number[]):
   var addOne = (x) => x + 1;
 
   document.write('1 + 1 = ' + addOne(1) + '.<br>')
+
+////////////////////////////////////////////////////////////////////////////////
+// Classes
+////////////////////////////////////////////////////////////////////////////////
+
+class Animal {
+  // Available outside of the class. Each instance has it's own favFood
+  public favFood: string;
+
+  // static shared between all instances of a class
+  static numOfAnimals: number = 0;
+
+  constructor(private name: string, private owner: string) {
+    Animal.numOfAnimals++;
+  }
+
+  ownerInfo(){
+    document.write(this.name + ' is owned by ' + this.owner + '.<br>');
+  }
+
+  static howManyAnimals(): number {
+    return Animal.numOfAnimals;
+  }
+
+  private _weight: number;
+  get weight(): number {
+    return this._weight;
+  }
+
+  set weight(weight: number){
+    this._weight = weight
+  }
+}
+
+var spot = new Animal('Spot', 'Doug');
+spot.ownerInfo();
+spot.weight = 100;
+document.write('Spot\'s weight is ' + spot.weight + ' pounds.<br>')
+document.write('# of Animal instances: ' + Animal.howManyAnimals() + '<br>')
