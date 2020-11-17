@@ -1,5 +1,24 @@
-# Learn You Typescript
+# Typescript Crash Course
 
-`tsc types.ts --watch --target ES5`
+```sh
+npm i -g typescript # install Typescript globally.
+tsc -version # Check that Typescript is installed and the version number.
+touch tsconfig.json # Create a TS configuration file.
+tsc # transpile .ts files in the cwd using the tsconfig.json options.
+npm init -y
+npm i lodash
+npm i -D @types/lodash # Install TS typings for lodash
+```
 
-Translation: run Typescript compiler in watch mode and transpile to ECMAscript 5
+## Compiler Options
+
+```json
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "watch": true,
+    "lib": ["dom", "es2017"],
+    "moduleResolution": "node"
+  }
+}
+```

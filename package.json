@@ -1,14 +1,18 @@
 {
-  "name": "learn-you-typescript",
+  "name": "typescript-crash-course",
   "version": "1.0.0",
-  "description": "",
+  "description": "```sh npm i -g typescript # install Typescript globally. tsc -version # Check that Typescript is installed and the version number. touch tsconfig.json # Create a TS configuration file. tsc # transpile .ts files in the cwd using the tsconfig.json options. ```",
   "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.165"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "typescript": "^2.5.3"
-  }
+  "license": "ISC"
 }
