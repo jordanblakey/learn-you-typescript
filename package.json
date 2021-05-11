@@ -4,7 +4,7 @@
   "description": "```sh npm i -g typescript # install Typescript globally. tsc -version # Check that Typescript is installed and the version number. touch tsconfig.json # Create a TS configuration file. tsc # transpile .ts files in the cwd using the tsconfig.json options. ```",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.165"
